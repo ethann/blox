@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
@@ -23,5 +24,10 @@ gulp.task('watchForReload', () => {
             baseDir: "./"
         }
     });
-    gulp.watch(['**/*.js', './src/scss/**/*.scss', '**/*.html'], ['reloadBrowser']);
+
+    watch([
+            '**/*.js',
+            './src/scss/**/*.scss',
+            '**/*.html'],
+        () => gulp.start('reloadBrowser'));
 });

@@ -1,0 +1,83 @@
+$font-stack: Helvetica, sans-serif;
+$foreground-color: #000000;
+$primary-color: #232020;
+$secondary-color: #EDEDED;
+
+body {
+  font: 100% $font-stack;
+  background-color: $primary-color;
+  margin: 20px;
+}
+
+.flow-workspace {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes move-bg-gradient {
+  0% {
+    background-position: -57px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.flow-group {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #1C1818;
+  padding: 20px;
+
+  .flow-stage {
+    width:200px;
+    min-height: 122px;
+    margin: 0 4px;
+    padding: 2px 0;
+    border: 0 solid #6B3018;
+    border-width: 12px 1px 1px;
+    box-shadow: 0 -1px 0px #a5654c;
+    background-color: #A57f4c;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    
+    &.dragging-block {
+      background: repeating-linear-gradient(-45deg, #A57f4c, #A57f4c 20px, #A58D4C 20px, #A58D4C 40px);
+      animation: linear infinite move-bg-gradient 1s;
+      background-size: 150% 100%;
+      box-shadow: 0 0 0 1px #EDEC57;
+    }
+  }
+  
+  .flow-block {
+    // background-color: #312722;
+    background-color: #d2ae7d;
+    box-shadow: -1px -1px 0px rgba(0,0,0,0.6) inset, 1px 1px 0px rgba(255, 255, 255, 0.12) inset;
+    margin: 2px 2px 0;
+    padding: 5px;
+    color: $foreground-color;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    &.dummy {
+      opacity: 0.4;
+    }
+
+    &.isDragged {
+      opacity: 0.8;
+      background-color: #EDEC57;
+    }
+
+    &:last-child {
+      margin-bottom: 2px;
+    }
+  }
+}

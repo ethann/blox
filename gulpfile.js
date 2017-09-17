@@ -18,7 +18,7 @@ gulp.task('reloadBrowser', ['scss'], (done) => {
     done();
 });
 
-gulp.task('watchForReload', () => {
+gulp.task('watchForReload', ['scss'], () => {
     browserSync.init({
         server: {
             baseDir: "./"

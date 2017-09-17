@@ -25,14 +25,37 @@ body {
   }
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.hidden {
+  display: none !important;
+}
+
 .flow-group {
   position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
+  top: 1px;
+  left: 1px;
   justify-content: space-around;
   background-color: #1C1818;
   padding: 20px;
+  
+  &.dragging-stage {
+    background: repeating-linear-gradient(-45deg, #463620, #463620 20px, #463c20 20px, #463c20 40px);
+    animation: linear infinite move-bg-gradient 1s;
+    background-size: 150% 100%;
+    box-shadow: 0 0 0 1px #EDEC57;
+  }
 
   .flow-stage {
     width:200px;
@@ -47,6 +70,10 @@ body {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
+    
+    &.dummy {
+      opacity: 0.4;
+    }
     
     &.dragging-block {
       background: repeating-linear-gradient(-45deg, #A57f4c, #A57f4c 20px, #A58D4C 20px, #A58D4C 40px);
@@ -69,11 +96,6 @@ body {
 
     &.dummy {
       opacity: 0.4;
-    }
-
-    &.isDragged {
-      opacity: 0.8;
-      background-color: #EDEC57;
     }
 
     &:last-child {

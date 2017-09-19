@@ -14,6 +14,19 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
+
+  &.move-content {
+    cursor: move;
+  }
+
+  .flow-perspective {
+    position: absolute;
+    
+    &.unactive {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+  }
 }
 
 @keyframes move-bg-gradient {

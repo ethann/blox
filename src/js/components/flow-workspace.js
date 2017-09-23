@@ -18,7 +18,7 @@ Vue.component('flow-workspace', {
         },
         onWorkspaceDrag(event) {
             if(!this.canBeMoved) return false;
-            // console.log(event)
+
             this.perspectivePosition[0] += event.movementY;
             this.perspectivePosition[1] += event.movementX;
             this.$forceUpdate();

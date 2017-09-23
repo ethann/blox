@@ -1,6 +1,6 @@
 Vue.component('tools', {
     template: `<div class="app-tools" :style="{width: width}">
-        <div class="tools-resizer noselect"
+        <div class="tools-resizer noselect" :class="{'is-resizing': isResizing}"
              @mousedown="onResizeStart">&lt;</div>
         <div class="tools-content">
             <slot></slot>

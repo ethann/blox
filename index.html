@@ -1,12 +1,26 @@
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">        
     <link type="text/css" rel="stylesheet" href="./dist/css/style.min.css"></link>
     <script src="./node_modules/vue/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
         <flow-workspace ref="workspace" :current-flows="currentFlows"></flow-workspace>
-        <tools></tools>
+        <tools>
+            <tool>
+                let's put something inside<br>
+                special tool
+            </tool>
+            <tool>
+                let's put something inside<br>
+                special tool
+            </tool>
+            <tool>
+                let's put something inside<br>
+                special tool
+            </tool>
+        </tools>
     </div>
     
     <script src="./src/js/components/block.js"></script>
@@ -14,6 +28,7 @@
     <script src="./src/js/components/stage.js"></script>
     <script src="./src/js/components/flow-workspace.js"></script>
     <script src="./src/js/components/tools.js"></script>
+    <script src="./src/js/components/tool.js"></script>
     <script src="./src/js/KeyEvents.js"></script>
     <script src="./src/js/script.js"></script>
 </body>

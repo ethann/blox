@@ -28,7 +28,6 @@ Vue.component('flow-workspace', {
             if(event.deltaY > 0) newZoomLevel++;
 
             this.zoomLevel = Math.max(-5, Math.min(newZoomLevel, 5));
-            console.log(this.zoom);
         }
     },
     computed: {

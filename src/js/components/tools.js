@@ -1,5 +1,5 @@
 Vue.component('tools', {
-    template: `<div class="app-tools" :style="{width: toolWidth}">
+    template: `<div class="app-tools" :style="{width: width}">
         <div class="tools-resizer noselect"
              @mousedown="onResizeStart">&lt;</div>
         <div class="tools-content">
@@ -24,7 +24,7 @@ Vue.component('tools', {
             var bodyWidth = document.body.getBoundingClientRect().width;
             var newWidth = bodyWidth - e.clientX - 20;
             var maxWidth = Math.min(this.toolMaxWidth, bodyWidth-40);
-            this.toolWidth = Math.max(this.minWidth, Math.min(newWidth, this.maxWidth));
+            this.width = Math.max(this.minWidth, Math.min(newWidth, this.maxWidth));
         },
         onResizeStop() {
             this.isResizing = false;

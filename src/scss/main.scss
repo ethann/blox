@@ -1,4 +1,5 @@
 $font-stack: Helvetica, sans-serif;
+$background-color: #E0E0E0;
 $foreground-color: #000000;
 $primary-color: #232020;
 $secondary-color: #EDEDED;
@@ -12,7 +13,9 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
-  border: 20px solid #E0E0E0; 
+  background-color: $background-color;
+  padding: 18px;
+  border: 2px solid darken($background-color, 5);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -47,6 +50,9 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
+  border: 1px solid darken($background-color, 10);
+  background-color: $primary-color;
+  box-sizing: border-box;
 
   &.move-content {
     cursor: move;
@@ -139,20 +145,54 @@ body {
   .tools-resizer {
     cursor: ew-resize;
     overflow: hidden;
-    width: 10px;
+    min-width: 10px;
     font-family: comic sans ms;
     color: #858585;
     background-color: #E0E0E0;
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: hover;
 
     &:hover {
+      background-color: #D3D3D3;
+    }
+
+    &.is-resizing {
       background-color: #D3D3D3;
     }
   }
 
   .tools-content {
     flex-grow: 1;
+    border: 1px solid darken($background-color, 10);
+    box-sizing: border-box;
+    overflow: hidden;
+
+    .tools-tool {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid darken($background-color, 10);
+      font-family: Roboto;
+      font-size: .8em;
+      font-weight: 100;
+
+      .tool-header {
+        height: 20px;
+        background-color: darken($background-color, 5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      
+      .tool-content {
+        background-color: lighten($background-color, 15);
+        padding: 2px;
+      }
+    }
   }
 }

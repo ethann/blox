@@ -11,6 +11,7 @@ Vue.component('flow-workspace', {
     methods: {
         onKeyDown(event) {
             if(event.keyCode === ' '.charCodeAt(0)) this.canBeMoved = true;
+            if(event.keyCode === 'R'.charCodeAt(0)) this.resetPosition();
         },
         onKeyUp(event) {
             if(event.keyCode === ' '.charCodeAt(0)) this.canBeMoved = false;
@@ -28,6 +29,10 @@ Vue.component('flow-workspace', {
             if(event.deltaY > 0) newZoomLevel++;
 
             this.zoomLevel = Math.max(-5, Math.min(newZoomLevel, 5));
+        },
+        resetPosition() {
+            this.perspectivePosition.fill(0);
+            this.$forceUpdate();
         }
     },
     computed: {

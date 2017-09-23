@@ -21,8 +21,10 @@ Vue.component('tools', {
         onResize(e) {
             if(!this.isResizing) return;
 
-            var newWidth = this.toolWidth - event.movementX;
-            this.toolWidth = Math.max(this.toolMinWidth, Math.min(newWidth, this.toolMaxWidth));
+            var bodyWidth = document.body.getBoundingClientRect().width;
+            var newWidth = bodyWidth - e.clientX - 20;
+            var maxWidth = Math.min(this.toolMaxWidth, bodyWidth-40);
+            this.toolWidth = Math.max(this.minWidth, Math.min(newWidth, this.maxWidth));
         },
         onResizeStop() {
             this.isResizing = false;
@@ -31,9 +33,9 @@ Vue.component('tools', {
     data() {
         return {
             isResizing: false,
-            toolWidth: 200,
-            toolMinWidth: 10,
-            toolMaxWidth: 600
+            width: 200,
+            minWidth: 10,
+            maxWidth: 600
         };
     }
 });

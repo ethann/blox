@@ -6,7 +6,7 @@ Vue.component('tools', {
             <slot></slot>
         </div>
     </div>`,
-    mounted() {
+    created() {
         document.addEventListener('mouseup', this.onResizeStop);
         document.addEventListener('mousemove', this.onResize);
     },

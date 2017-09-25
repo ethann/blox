@@ -7,6 +7,9 @@ Vue.component('tools', {
         </div>
     </div>`,
     created() {
+        var recentWidth = window.localStorage.getItem('toolbar-width');
+        if(recentWidth) this.width = recentWidth;
+
         document.addEventListener('mouseup', this.onResizeStop);
         document.addEventListener('mousemove', this.onResize);
     },
@@ -17,10 +20,11 @@ Vue.component('tools', {
     methods: {
         onResizeStart() {
             this.isResizing = true;
+            this.lastWidth = this.width;
         },
         onResize(e) {
             if(!this.isResizing) return;
-
+            
             var bodyWidth = document.body.getBoundingClientRect().width;
             var newWidth = bodyWidth - e.clientX - 20;
             var maxWidth = bodyWidth - 40;
@@ -28,13 +32,16 @@ Vue.component('tools', {
         },
         onResizeStop() {
             this.isResizing = false;
+            if(this.lastWidth !== this.width)
+                window.localStorage.setItem('toolbar-width', this.width);
         }
     },
     data() {
         return {
             isResizing: false,
             width: 200,
-            minWidth: 10
+            minWidth: 10,
+            lastWidth: 0
         };
     }
 });

@@ -8,18 +8,7 @@
     <div id="app">
         <flow-workspace ref="workspace" :current-flows="currentFlows"></flow-workspace>
         <tools>
-            <tool>
-                let's put something inside<br>
-                special tool
-            </tool>
-            <tool>
-                let's put something inside<br>
-                special tool
-            </tool>
-            <tool>
-                let's put something inside<br>
-                special tool
-            </tool>
+            <tool v-for="tool in currentToolset" :header="tool.header">{{tool.content}}</tool>
         </tools>
     </div>
     
@@ -30,6 +19,9 @@
     <script src="./src/js/components/tools.js"></script>
     <script src="./src/js/components/tool.js"></script>
     <script src="./src/js/KeyEvents.js"></script>
+
+    <script src="./src/js/plugins/XJson.js"></script>
+
     <script src="./src/js/script.js"></script>
 </body>
 </html>

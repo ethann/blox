@@ -1,13 +1,18 @@
 Vue.component('block', {
     props: ['details'],
     template: `<div :class="{'flow-block': true, 'noselect': true, 'hidden': isHidden}"
-                    :draggable="canBeDragged"
+                    :draggable="canBeDragged" @click.self="selectBlock"
                     @dragstart="prepareToDrag" @dragend="endDragging">{{details}}</div>`,
     created() {
         KeyEvents.listen('keyup', this.onKeyUp);
         KeyEvents.listen('keydown', this.onKeyDown);
     },
     methods: {
+        selectBlock() {
+            var stageIndex = this.$parent.$parent.$children.indexOf(this.$parent);
+            var blockIndex = this.$parent.$children.indexOf(this);
+            window.vm.$emit('blockSelected', stageIndex, blockIndex);
+        },
         prepareToDrag(event) {
             if(!this.canBeDragged) return false;
             var stageIndex = this.$parent.$parent.$children.indexOf(this.$parent);

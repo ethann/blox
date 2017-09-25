@@ -4,7 +4,7 @@ Vue.component('stage', {
         <div :class="{'flow-stage': true, 'hidden': isHidden,
                       'dragging-block': $parent.drag.type === 'block', 'noselect': true}"
              @dragover="prepareToDrop" @dragenter="prepareToDrop" @drop="drop"
-             :draggable="canBeDragged"
+             :draggable="canBeDragged" @click.self="selectStage"
              @dragstart="prepareToDrag" @dragend="endDragging">
             <block v-for="blockDetails in details.blocks" :details="blockDetails"></block>
         </div>`,
@@ -13,6 +13,10 @@ Vue.component('stage', {
         KeyEvents.listen('keydown', this.onKeyDown);
     },
     methods: {
+        selectStage() {
+            var stageIndex = this.$parent.$children.indexOf(this);
+            window.vm.$emit('stageSelected', stageIndex);
+        },
         prepareToDrag() {
             if(!this.canBeDragged) return false;
             var stageIndex = this.$parent.$children.indexOf(this);

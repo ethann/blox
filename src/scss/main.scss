@@ -187,6 +187,26 @@ body {
         text-transform: uppercase;
         font-weight: bold;
         white-space: nowrap;
+        cursor: pointer;
+        position: relative;
+        color: #858585;
+        
+        &::before {
+          font-family: Roboto;
+          display: block;
+          content: "/\\";
+          width: 200px;
+          height: 20px;
+          position: absolute;
+          top: 2px;
+          left: 2px;
+        }
+
+        &.collapsed {
+          &::before {
+            content: "\\/";
+          }
+        }
       }
       
       .tool-content {
